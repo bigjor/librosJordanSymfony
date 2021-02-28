@@ -2,7 +2,8 @@
 namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-class LibroController {
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+class LibroController extends AbstractController  {
     private $libros = array(
         array("isbn" => "978-84-16327-81-2", 
               "titulo" => "El duque y yo (Bridgerton 1)", 
@@ -31,16 +32,11 @@ class LibroController {
         });
 
         if (count($resultado) > 0) {
-            $respuesta = "";
-            $resultado = array_shift($resultado);
-            $respuesta .= "<ul><li>" . $resultado["isbn"] . "</li>";
-            $respuesta .= "<li>" . $resultado["titulo"] . "</li>";
-            $respuesta .= "<li>" . $resultado["autor"] . "</li>";
-            $respuesta .= "<li>" . $resultado["paginas"] . "</li></ul>";
-
-            return new Response("<html><body>$respuesta</body></html>");
+            return $this->render('ficha_libro.html.twig',
+                array('libro' => array_shift($resultado)));
         } 
-        return new Response("Libro no encontrado");
+        return $this->render('ficha_libro.html.twig',
+                array('libro' => NULL));
     }
 }
 ?>

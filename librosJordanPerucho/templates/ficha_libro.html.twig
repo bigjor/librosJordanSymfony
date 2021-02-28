@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}Libros{% endblock %}
+{% block body %}
+    <h1>Ficha del libro</h1>
+    {% if libro %}
+    <ul>
+        <li style="text-transform: uppercase;"><strong>{{ libro.titulo }}</strong></li>
+        <li style="font-style: italic;">{{ libro.autor }}</li>
+        <li>{{ libro.paginas }} páginas</li>
+    </ul>
+    {% else %}
+        <p>Libro no encontrado</p>
+    {% endif %}
+
+    <a href ="{{ path('inicio') }}">Volver al inicio</a>
+
+{% endblock %}
