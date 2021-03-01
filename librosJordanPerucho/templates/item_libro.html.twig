@@ -1,0 +1,5 @@
+{% extends 'base.html.twig' %}
+{% block title %}Inicio{% endblock %}
+{% block body %}
+<li><a href="{{ path('ficha_libro', {'isbn': libro.isbn}) }}">{{ libro.titulo }}</a></li>
+{% endblock %}

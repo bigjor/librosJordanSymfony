@@ -4,5 +4,16 @@
 <h1>Inicio</h1>
 <h2>Benvingdos a la web de libros.</h2>
 <p>Pàgina de inicio</p>
-<img src="{{ asset('imgs/libros.jpg') }}" />
+{# <img src="{{ asset('imgs/libros.jpg') }}" /> #}
+
+<h1>Listado de Libros</h1>
+{% if libros %}
+<ul>
+{% for libro in libros %}
+{{ include ('item_libro.html.twig', { 'libro': libro }) }}
+{% endfor %}
+</ul>
+{% else %}
+<p>No se han encontrado libros</p>
+{% endif %}
 {% endblock %}
