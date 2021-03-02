@@ -15,7 +15,10 @@ class InicioController extends AbstractController {
     * @Route("/", name="inicio")
     */
     public function inicio() {
-        return $this->render('inicio.html.twig', array('libros' => $this->libros));
+        return $this->render(
+            'inicio.html.twig', 
+            array('libros' => $this->libros)
+        );
     }
 }
 ?>
